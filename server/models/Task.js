@@ -7,6 +7,12 @@ const TaskSchema = new mongoose.Schema({
   reminderAt: { type: Date },
   completed: { type: Boolean, default: false },
   reminded: { type: Boolean, default: false },
+  emailSent: { type: Boolean, default: false },
+  isImportant: { type: Boolean, default: false },
+  callSent: { type: Boolean, default: false },
+  googleEventId: { type: String },
+  userEmail: { type: String },
+  userPhone: { type: String },
   createdAt: { type: Date, default: Date.now }
 });
 

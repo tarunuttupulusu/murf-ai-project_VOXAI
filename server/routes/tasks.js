@@ -12,10 +12,35 @@ router.get('/', async (req, res) => {
   }
 });
 
+const { google } = require('googleapis');
+
 // Create a task
 router.post('/', async (req, res) => {
+  const { title, description, category, reminderAt, userEmail, userPhone, isImportant, googleToken } = req.body;
   try {
-    const task = new Task(req.body);
+    let googleEventId = null;
+
+    // Sync with Google Calendar if token provided
+    if (googleToken && reminderAt) {
+      const auth = new google.auth.OAuth2();
+      auth.setCredentials(googleToken);
+      const calendar = google.calendar({ version: 'v3', auth });
+      
+      const event = {
+        summary: title,
+        description: description || 'Task from VoxAI Assistant',
+        start: { dateTime: new Date(reminderAt).toISOString() },
+        end: { dateTime: new Date(new Date(reminderAt).getTime() + 30 * 60000).toISOString() }, // 30 min duration
+      };
+
+      const { data } = await calendar.events.insert({
+        calendarId: 'primary',
+        resource: event,
+      });
+      googleEventId = data.id;
+    }
+
+    const task = new Task({ title, description, category, reminderAt, userEmail, userPhone, isImportant, googleEventId });
     await task.save();
     res.json(task);
   } catch (e) {

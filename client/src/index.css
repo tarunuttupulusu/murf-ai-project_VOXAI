@@ -2,18 +2,18 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #10267D;
-  --primary-light: #1a35a8;
-  --primary-dark: #0a1a5c;
-  --cyan: #00F5FF;
-  --purple: #8A2BE2;
-  --bg: #060b18;
-  --bg-card: rgba(255,255,255,0.04);
-  --bg-card-hover: rgba(255,255,255,0.07);
-  --border: rgba(255,255,255,0.08);
-  --border-active: rgba(0,245,255,0.3);
+  --primary: #FFB800;
+  --primary-light: #FFD700;
+  --primary-dark: #b38200;
+  --cyan: #FFB800;
+  --purple: #FF8A00;
+  --bg: #050505;
+  --bg-card: rgba(15, 15, 15, 0.7);
+  --bg-card-hover: rgba(25, 25, 25, 0.8);
+  --border: rgba(255, 184, 0, 0.08);
+  --border-active: rgba(255, 184, 0, 0.3);
   --text: #EBEBEB;
-  --text-muted: rgba(235,235,235,0.5);
+  --text-muted: rgba(235, 235, 235, 0.5);
   --sidebar-w: 220px;
 }
 
@@ -88,21 +88,21 @@ body {
 .animated-bg::before {
   content: '';
   position: absolute;
-  width: 600px; height: 600px;
+  width: 800px; height: 800px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(16,38,125,0.3) 0%, transparent 70%);
-  top: -200px; left: -100px;
-  animation: float1 12s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(255, 184, 0, 0.07) 0%, transparent 70%);
+  top: -300px; left: -200px;
+  animation: float1 15s ease-in-out infinite;
 }
 
 .animated-bg::after {
   content: '';
   position: absolute;
-  width: 500px; height: 500px;
+  width: 700px; height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(138,43,226,0.15) 0%, transparent 70%);
-  bottom: -150px; right: -100px;
-  animation: float2 15s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(255, 138, 0, 0.05) 0%, transparent 70%);
+  bottom: -200px; right: -150px;
+  animation: float2 20s ease-in-out infinite;
 }
 
 @keyframes float1 {
@@ -142,9 +142,9 @@ body {
   width: var(--sidebar-w);
   position: fixed;
   top: 0; left: 0; bottom: 0;
-  background: rgba(6,11,24,0.95);
-  border-right: 1px solid var(--border);
-  backdrop-filter: blur(30px);
+  background: #080808;
+  border-right: 1px solid rgba(255, 184, 0, 0.05);
+  backdrop-filter: blur(40px);
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -177,7 +177,7 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(0,245,255,0.4);
+  box-shadow: 0 0 30px rgba(255, 184, 0, 0.3);
 }
 
 .btn-danger {
