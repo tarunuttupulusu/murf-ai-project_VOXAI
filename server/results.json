@@ -1,0 +1,6 @@
+{
+  "OpenAI": "Working",
+  "MurfAI": "Working",
+  "Twilio": "Working",
+  "GoogleTranslate": "Error: Cloud Translation API has not been used in project 887344751031 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/translate.googleapis.com/overview?project=887344751031 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."
+}
