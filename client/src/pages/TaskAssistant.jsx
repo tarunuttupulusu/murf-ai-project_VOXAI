@@ -19,7 +19,8 @@ export default function TaskAssistant() {
   useEffect(() => {
     checkConfig();
     fetchTasks();
-    const socket = io('http://localhost:5000');
+    const socketUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    const socket = io(socketUrl);
     socket.on('reminder', ({ task }) => {
       toast('Reminder: ' + task.title, { icon: '⏰', duration: 10000 });
       speakWithFallback('Reminder: ' + task.title, 'en');
