@@ -8,6 +8,8 @@ import Translator from './pages/Translator';
 import VoiceStudio from './pages/VoiceStudio';
 import TaskAssistant from './pages/TaskAssistant';
 import PhoneCalls from './pages/PhoneCalls';
+import phoneIcon from './assets/vite.svg'; // Temporary if needed, but let's use the actual logo
+import logo from './assets/logo.png';
 import ApiKeyModal from './components/ApiKeyModal';
 import axios from 'axios';
 
@@ -24,15 +26,34 @@ function Sidebar({ onApiClick }) {
   return (
     <aside className="sidebar">
       {/* Logo */}
-      <div style={{ padding: '24px 20px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{
-            width: 36, height: 36, borderRadius: 10,
-            background: 'linear-gradient(135deg, #00F5FF, #8A2BE2)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 18, flexShrink: 0
-          }}>🎙</div>
-          <span className="logo-text" style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 18, color: '#EBEBEB' }}>VoxAI</span>
+      <div style={{ padding: '24px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+          <img
+            src={logo}
+            alt="VoxAI Logo"
+            style={{
+              width: '80px',
+              height: '80px',
+              objectFit: 'cover',
+              borderRadius: '16px',
+              display: 'block',
+              boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
+              border: '1px solid rgba(255,255,255,0.1)'
+            }}
+          />
+          <span style={{ 
+            fontSize: '18px', 
+            fontWeight: '800', 
+            letterSpacing: '2px', 
+            color: '#fff', 
+            textTransform: 'uppercase',
+            background: 'linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.5) 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            display: 'block'
+          }}>
+            VoxAI
+          </span>
         </div>
       </div>
 
@@ -48,14 +69,18 @@ function Sidebar({ onApiClick }) {
               padding: '10px 12px', borderRadius: 12,
               textDecoration: 'none',
               transition: 'all 0.2s ease',
-              background: isActive ? 'rgba(0,245,255,0.08)' : 'transparent',
-              border: `1px solid ${isActive ? 'rgba(0,245,255,0.2)' : 'transparent'}`,
-              color: isActive ? '#00F5FF' : 'rgba(235,235,235,0.6)',
+              background: isActive ? 'rgba(255, 184, 0, 0.1)' : 'transparent',
+              border: `1px solid ${isActive ? 'rgba(255, 184, 0, 0.3)' : 'transparent'}`,
+              color: isActive ? 'var(--primary)' : 'rgba(235,235,235,0.6)',
               fontSize: 14, fontWeight: isActive ? 600 : 400,
+              position: 'relative'
             })}
           >
             <span style={{ fontSize: 18, width: 24, textAlign: 'center' }}>{item.icon}</span>
             <span className="nav-label">{item.label}</span>
+            {item.path === '/tasks' && localStorage.getItem('voxai_user_email') && (
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', position: 'absolute', right: 12, top: 18 }} />
+            )}
           </NavLink>
         ))}
       </nav>

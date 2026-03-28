@@ -22,8 +22,10 @@ router.post('/murf', async (req, res) => {
     }, {
       headers: { 'api-key': process.env.MURF_API_KEY, 'Content-Type': 'application/json' }
     });
+    console.log('✅ Murf Voice Generated:', response.data.audioFile);
     res.json({ audioUrl: response.data.audioFile, duration: response.data.audioDuration });
   } catch (err) {
+    console.error('❌ Murf API Error:', err.response?.data || err.message);
     res.status(500).json({ error: err.response?.data?.message || err.message });
   }
 });

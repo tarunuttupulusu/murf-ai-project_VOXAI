@@ -11,14 +11,20 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "axios": "^1.13.6",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "google-auth-library": "^10.6.2",
+    "googleapis": "^171.4.0",
     "mongoose": "^9.3.2",
+    "multer": "^2.1.1",
     "node-cron": "^4.2.1",
+    "nodemailer": "^8.0.3",
     "nodemon": "^3.1.14",
     "openai": "^6.32.0",
+    "pdf-parse": "^2.4.5",
     "socket.io": "^4.8.3",
     "twilio": "^5.13.0"
   }

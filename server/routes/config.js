@@ -10,10 +10,15 @@ router.get('/status', (req, res) => {
   const keys = {
     MURF_API_KEY: process.env.MURF_API_KEY && process.env.MURF_API_KEY !== 'your_murf_api_key_here',
     OPENAI_API_KEY: process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== 'your_openai_api_key_here',
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'your_gemini_api_key_here',
     TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_ACCOUNT_SID !== 'your_twilio_account_sid_here',
     TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN && process.env.TWILIO_AUTH_TOKEN !== 'your_twilio_auth_token_here',
     TWILIO_PHONE_NUMBER: process.env.TWILIO_PHONE_NUMBER && process.env.TWILIO_PHONE_NUMBER !== 'your_twilio_phone_number_here',
     GOOGLE_TRANSLATE_API_KEY: process.env.GOOGLE_TRANSLATE_API_KEY && process.env.GOOGLE_TRANSLATE_API_KEY !== 'your_google_translate_api_key_here',
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID && !process.env.GOOGLE_CLIENT_ID.includes('your_'),
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET && !process.env.GOOGLE_CLIENT_SECRET.includes('your_'),
+    GOOGLE_CLIENT_ID_RAW: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET_RAW: process.env.GOOGLE_CLIENT_SECRET,
   };
   res.json(keys);
 });
@@ -21,7 +26,7 @@ router.get('/status', (req, res) => {
 // Save API key to .env
 router.post('/key', (req, res) => {
   const { key, value } = req.body;
-  const allowedKeys = ['MURF_API_KEY', 'OPENAI_API_KEY', 'TWILIO_ACCOUNT_SID', 'TWILIO_AUTH_TOKEN', 'TWILIO_PHONE_NUMBER', 'GOOGLE_TRANSLATE_API_KEY'];
+  const allowedKeys = ['MURF_API_KEY', 'OPENAI_API_KEY', 'GEMINI_API_KEY', 'TWILIO_ACCOUNT_SID', 'TWILIO_AUTH_TOKEN', 'TWILIO_PHONE_NUMBER', 'GOOGLE_TRANSLATE_API_KEY'];
   if (!allowedKeys.includes(key)) return res.status(400).json({ error: 'Invalid key name' });
 
   try {

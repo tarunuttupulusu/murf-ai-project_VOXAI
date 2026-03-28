@@ -2,11 +2,11 @@ import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 
 const features = [
-  { path: '/interview', label: 'HR Interview', icon: '🎤', desc: 'Speech-to-Speech mock interview with AI evaluator.', color: '#00F5FF' },
-  { path: '/translator', label: 'Translator', icon: '🌍', desc: 'Real-time voice-to-voice language translation.', color: '#8A2BE2' },
-  { path: '/voice-studio', label: 'Voice Studio', icon: '🎭', desc: 'Murf-style text-to-speech with customizable tones.', color: '#ff0060' },
-  { path: '/tasks', label: 'Task Assistant', icon: '⏰', desc: 'Voice-controlled daily learning schedule reminders.', color: '#22c55e' },
-  { path: '/calls', label: 'Phone Calls', icon: '📞', desc: 'Automated real Twilio phone calls with AI voice.', color: '#f59e0b' },
+  { path: '/interview', label: 'HR Interview', icon: '🎤', desc: 'Speech-to-Speech mock interview with AI evaluator.', color: '#FFB800' },
+  { path: '/translator', label: 'Translator', icon: '🌍', desc: 'Real-time voice-to-voice language translation.', color: '#FF8A00' },
+  { path: '/voice-studio', label: 'Voice Studio', icon: '🎭', desc: 'Murf-style text-to-speech with customizable tones.', color: '#FFB800' },
+  { path: '/tasks', label: 'Task Assistant', icon: '⏰', desc: 'Voice-controlled daily learning schedule reminders.', color: '#FFCC00' },
+  { path: '/calls', label: 'Phone Calls', icon: '📞', desc: 'Automated real Twilio phone calls with AI voice.', color: '#FFB800' },
 ];
 
 export default function Dashboard() {
@@ -27,7 +27,7 @@ export default function Dashboard() {
                 whileHover={{ y: -5, scale: 1.02 }}
                 style={{ padding: 24, cursor: 'pointer', height: '100%', position: 'relative', overflow: 'hidden' }}
               >
-                <div style={{ position: 'absolute', top: -50, right: -50, width: 100, height: 100, background: feat.color, opacity: 0.1, filter: 'blur(30px)', borderRadius: '50%' }} />
+                <div style={{ position: 'absolute', top: -50, right: -50, width: 100, height: 100, background: feat.color, opacity: 0.15, filter: 'blur(40px)', borderRadius: '50%' }} />
                 
                 <div style={{ fontSize: 40, marginBottom: 16 }}>{feat.icon}</div>
                 <h3 style={{ fontSize: 20, marginBottom: 8, color: '#fff' }}>{feat.label}</h3>
